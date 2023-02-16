@@ -1,0 +1,4 @@
+-- require'lspconfig'.bashls.setup {
+--   on_attach = require'lsp.handlers'.on_attach,
+--   root_dir = require'lspconfig/util'.root_pattern("*.sh"),
+-- }

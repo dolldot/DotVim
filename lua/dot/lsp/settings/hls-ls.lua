@@ -1,0 +1,6 @@
+-- require'lspconfig'.hls.setup {
+--   on_attach = require'lsp.handlers'.on_attach,
+--   root_dir = require'lspconfig/util'.root_pattern("*.hs", "*.cabal",
+--                                                   "stack.yaml", "cabal.project",
+--                                                   "package.yaml", "hie.yaml"),
+-- }

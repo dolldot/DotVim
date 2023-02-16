@@ -1,0 +1,13 @@
+-- Package config
+require("dot.config.autopairs")
+require("dot.config.colorizer")
+-- require("dot.config.dashboard")
+require("dot.config.lualine")
+require("dot.config.mason")
+require("dot.config.neoformat")
+require("dot.config.nvimtree")
+require("dot.config.telescope")
+require("dot.config.treesitter")
+require("dot.config.toggleterm")
+require("dot.config.comment")
+require("dot.config.neorg")
