@@ -1,6 +1,6 @@
 require"lspconfig".lua_ls.setup {
-  on_attach = require("dot.lsp.handlers").on_attach,
-  capabilities = require("dot.lsp.handlers").capabilities,
+  on_attach = require("dot.lsp.config").on_attach,
+  capabilities = require("dot.lsp.config").capabilities,
   settings = {
     Lua = {
       diagnostics = { globals = { "vim" } },

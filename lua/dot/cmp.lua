@@ -98,6 +98,7 @@ cmp.setup {
         neorg = "[Neorg]",
         buffer = "[Buffer]",
         path = "[Path]",
+        cmdline = "[Cmdline]",
       })[entry.source.name]
       return vim_item
     end,
@@ -109,14 +110,12 @@ cmp.setup {
     { name = "neorg" },
     { name = "buffer" },
     { name = "path" },
+    { name = "cmdline" },
   },
   confirm_opts = { behavior = cmp.ConfirmBehavior.Replace, select = false },
   -- documentation = {
   --   border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
   -- }, deprechated
-  window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
-  },
+  window = { completion = cmp.config.window.bordered(), documentation = cmp.config.window.bordered() },
   experimental = { ghost_text = false, native_menu = false },
 }
