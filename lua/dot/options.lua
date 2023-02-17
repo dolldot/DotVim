@@ -6,8 +6,8 @@ local opt = vim.opt
 -- cmd "au ColorScheme * hi SignColumn ctermbg=none guibg=none"
 
 --- COLORSCHEME ---
--- vim.g.colors_name = "onedark"
-cmd "colorscheme darkplus"
+-- cmd "colorscheme darkplus"
+cmd "colorscheme tokyonight-night"
 
 local options = {
   encoding = "utf-8",

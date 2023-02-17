@@ -4,12 +4,7 @@ local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
 if fn.empty(fn.glob(install_path)) > 0 then
-  fn.system({
-    "git",
-    "clone",
-    "https://github.com/wbthomason/packer.nvim",
-    install_path,
-  })
+  fn.system({ "git", "clone", "https://github.com/wbthomason/packer.nvim", install_path })
   execute "packadd packer.nvim"
 end
 
@@ -18,10 +13,7 @@ return require("packer").startup(function(use)
   use "wbthomason/packer.nvim"
 
   -- Telescope
-  use {
-    "nvim-telescope/telescope.nvim",
-    requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
-  }
+  use { "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } } }
   use "nvim-telescope/telescope-media-files.nvim"
 
   -- Provide web icons
@@ -38,10 +30,7 @@ return require("packer").startup(function(use)
   use "rafamadriz/friendly-snippets"
 
   -- Tree
-  use {
-    "kyazdani42/nvim-tree.lua",
-    requires = { "kyazdani42/nvim-web-devicons" },
-  }
+  use { "kyazdani42/nvim-tree.lua", requires = { "kyazdani42/nvim-web-devicons" } }
 
   -- Toggle terminals
   use "akinsho/toggleterm.nvim"
@@ -66,13 +55,11 @@ return require("packer").startup(function(use)
   use "unblevable/quick-scope"
 
   -- Statusline
-  use {
-    "nvim-lualine/lualine.nvim",
-    requires = { "kyazdani42/nvim-web-devicons", opt = true },
-  }
+  use { "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons", opt = true } }
 
   -- Colorscheme
   use "LunarVim/darkplus.nvim"
+  use "folke/tokyonight.nvim"
 
   -- Comment
   use "numToStr/Comment.nvim"
@@ -124,9 +111,7 @@ return require("packer").startup(function(use)
   use {
     "nvim-treesitter/nvim-treesitter",
     run = function()
-      local ts_update = require("nvim-treesitter.install").update({
-        with_sync = true,
-      })
+      local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
       ts_update()
     end,
     -- commit = "668de0951a36ef17016074f1120b6aacbe6c4515",
