@@ -1,52 +1,18 @@
-local kmap = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
-local wk_opts = {
+local ok, wk = pcall(require, "which-key")
+if not ok then
+  return
+end
+
+-- LuaFormatter off
+local opts = {
   mode = "n",
   prefix = "<leader>",
   buffer = nil,
   silent = true,
   noremap = true,
-  nowait = false,
+  nowait = false
 }
-
--- Set leader key
-kmap("n", "<Space>", "<NOP>", opts)
-vim.g.mapleader = " "
-
--- File explorer
--- kmap("n", "<Leader>e", ":NvimTreeToggle<CR>", opts)
-kmap("n", "<Leader>e",
-     "<cmd>lua require'dot.config.nvimtree'.toggle_tree()<CR>", opts)
-
-kmap("n", "<Leader>h",
-     "<cmd>lua require'dot.config.nvimtree'.toggle_tree_long()<CR>", opts)
-
--- Dashboard
-kmap("n", "<Leader>;", ":Dashboard<CR>", opts)
-
--- Telescope find files
-kmap("n", "<Leader>f", "<cmd>Telescope find_files<cr>", opts)
-
--- Save
-kmap("n", "<Leader>w", ":w!<CR>", opts)
-
--- Quit
-kmap("n", "<Leader>q", ":q!<CR>", opts)
-
--- Select all
-kmap("n", "<Leader>a", "gg<S-v>G", opts)
-
--- Open Lazygit
-kmap("n", "<Leader>lg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
-
--- Reloading vimrc
-kmap("n", "<Leader>r", ":source $MYVIMRC<CR>", opts)
-
--- Glow markdown preview
-kmap("n", "<Leader>g", "<cmd>Glow<CR>", opts)
-
--- Mason
-kmap("n", "<Leader>m", "<cmd>Mason<CR>", opts)
+-- LuaFormatter on
 
 local mappings = {
   ["a"] = "Select all",
@@ -63,12 +29,7 @@ local mappings = {
     m = { "<cmd>Neorg workspace mine<CR>", "Neorg Mine" },
     w = { "<cmd>Neorg workspace work<CR>", "Neorg Work" },
   },
-  t = {
-    name = "Terminal",
-    l = { "<cmd>lua _LAZYGIT_TOGGLE()<CR>", "Lazygit" },
-    b = { "<cmd>:ToggleTerm size=18 direction=horizontal<CR>",
-          "Terminal Bottom" },
-  },
+  t = { name = "Terminal", b = { "<cmd>:ToggleTerm size=18 direction=horizontal<CR>", "Terminal Bottom" } },
   G = {
     name = "Git",
     j = { "<cmd>lua require 'gitsigns'.next_hunk()<CR>", "Next Hunk" },
@@ -78,8 +39,7 @@ local mappings = {
     r = { "<cmd>lua require 'gitsigns'.reset_hunk()<CR>", "Reset Hunk" },
     R = { "<cmd>lua require 'gitsigns'.next_hunk()<CR>", "Reset Buffer" },
     s = { "<cmd>lua require 'gitsigns'.stage_hunk()<CR>", "Stage Hunk" },
-    u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<CR>",
-          "Undo Stage Hunk" },
+    u = { "<cmd>lua require 'gitsigns'.undo_stage_hunk()<CR>", "Undo Stage Hunk" },
     o = { "<cmd>Telescope git_status<CR>", "Open Changed File" },
     b = { "<cmd>Telescope git_branches<CR>", "Checkout Branch" },
     c = { "<cmd>Telescope git_commits<CR>", "Checkout Commit" },
@@ -87,11 +47,7 @@ local mappings = {
     d = { "<cmd>DiffviewOpen<CR>", "Open Diffview" },
     D = { "<cmd>DiffviewClose<CR>", "Close Diffview" },
   },
-  L = {
-    name = "LSP",
-    f = { "<cmd>Neoformat<CR>", "Format" },
-    i = { "<cmd>LspInfo<CR>", "Info" },
-  },
+  L = { name = "LSP", f = { "<cmd>Neoformat<CR>", "Format" }, i = { "<cmd>LspInfo<CR>", "Info" } },
   P = {
     name = "Packer",
     c = { "<cmd>PackerCompile<CR>", "Compile" },
@@ -113,9 +69,4 @@ local mappings = {
   T = { name = "Treesitter", i = { "<cmd>TSConfigInfo<CR>", "Info" } },
 }
 
-local ok, wk = pcall(require, "which-key")
-if not ok then
-  return
-end
-
-wk.register(mappings, wk_opts)
+wk.register(mappings, opts)
