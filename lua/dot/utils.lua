@@ -1,26 +1,13 @@
 local utils = {}
 
 function utils.define_augroups(definitions)
-  for group_name, definition in pairs(definitions) do
-    vim.cmd("augroup " .. group_name)
-    vim.cmd "autocmd!"
+  for group, definition in pairs(definitions) do
+    vim.api.nvim_create_augroup(group, { clear = false })
 
-    for _, def in pairs(definition) do
-      local command = table.concat(vim.tbl_flatten { "autocmd", def }, " ")
-      vim.cmd(command)
+    for _, item in pairs(definition) do
+      vim.api.nvim_create_autocmd(item[1], { group = group, pattern = item[2], command = item[3] })
     end
-
-    vim.cmd "augroup END"
   end
-end
-
-function utils.setup_document_highlight(bufnr)
-  local group = "lsp_document_highlight"
-  vim.api.nvim_create_augroup(group, { clear = false })
-
-  local hl_events = { "CursorHold", "CursorHoldI" }
-  vim.api.nvim_create_autocmd(hl_events, { group = group, buffer = bufnr, callback = vim.lsp.buf.document_highlight })
-  vim.api.nvim_create_autocmd("CursorMoved", { group = group, buffer = bufnr, callback = vim.lsp.buf.clear_references })
 end
 
 utils.define_augroups {
@@ -31,6 +18,15 @@ utils.define_augroups {
     { "BufNewFile", "*", "setlocal formatoptions-=c formatoptions-=r formatoptions-=o" },
   },
 }
+
+function utils.setup_document_highlight(bufnr)
+  local group = "lsp_document_highlight"
+  vim.api.nvim_create_augroup(group, { clear = false })
+
+  local hl_events = { "CursorHold", "CursorHoldI" }
+  vim.api.nvim_create_autocmd(hl_events, { group = group, buffer = bufnr, callback = vim.lsp.buf.document_highlight })
+  vim.api.nvim_create_autocmd("CursorMoved", { group = group, buffer = bufnr, callback = vim.lsp.buf.clear_references })
+end
 
 -- normal mode mapping
 function utils.set_keymapn(key, func)
