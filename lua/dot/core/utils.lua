@@ -10,15 +10,6 @@ function utils.define_augroups(definitions)
   end
 end
 
-utils.define_augroups {
-  _general_settings = {
-    { "TextYankPost", "*", "lua require('vim.highlight').on_yank({ higroup = 'Search', timeout = 200 })" },
-    { "BufWinEnter", "*", "setlocal formatoptions-=c formatoptions-=r formatoptions-=o" },
-    { "BufRead", "*", "setlocal formatoptions-=c formatoptions-=r formatoptions-=o" },
-    { "BufNewFile", "*", "setlocal formatoptions-=c formatoptions-=r formatoptions-=o" },
-  },
-}
-
 function utils.setup_document_highlight(bufnr)
   local group = "lsp_document_highlight"
   vim.api.nvim_create_augroup(group, { clear = false })
@@ -26,6 +17,12 @@ function utils.setup_document_highlight(bufnr)
   local hl_events = { "CursorHold", "CursorHoldI" }
   vim.api.nvim_create_autocmd(hl_events, { group = group, buffer = bufnr, callback = vim.lsp.buf.document_highlight })
   vim.api.nvim_create_autocmd("CursorMoved", { group = group, buffer = bufnr, callback = vim.lsp.buf.clear_references })
+end
+
+function utils.set_options(options)
+  for k, v in pairs(options) do
+    vim.api.nvim_set_option(k, v)
+  end
 end
 
 -- normal mode mapping

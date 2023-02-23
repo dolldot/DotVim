@@ -1,4 +1,4 @@
-local utils = require("dot.utils")
+local utils = require("dot.core.utils")
 local nmap = utils.set_keymapn
 local vmap = utils.set_keymapv
 local xmap = utils.set_keymapx

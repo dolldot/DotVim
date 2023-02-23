@@ -1,9 +1,5 @@
 -- Setup
-require("dot.plugins")
-require("dot.keymappings")
-require("dot.options")
-require("dot.utils")
-require("dot.cmp")
+require("dot.core")
 
 -- Language server
 require("dot.lsp")

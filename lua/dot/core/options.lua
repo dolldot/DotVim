@@ -1,5 +1,5 @@
 local cmd = vim.cmd
-local opt = vim.opt
+-- local opt = vim.opt
 
 --- TRANSPARENT BACKGROUND ---
 -- cmd "au ColorScheme * hi Normal ctermbg=none guibg=none"
@@ -44,13 +44,14 @@ local options = {
   hidden = true,
   colorcolumn = "120",
   conceallevel = 0,
-  completeopt = { "menuone", "noselect" },
+  completeopt = "menuone,noselect",
   cmdheight = 2,
 }
 
-opt.shortmess:append "c"
+-- opt.shortmess:append "c"
 
-for k, v in pairs(options) do
-  vim.opt[k] = v
-end
+-- for k, v in pairs(options) do
+--   vim.opt[k] = v
+-- end
 
+return options
