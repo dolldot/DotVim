@@ -90,7 +90,7 @@ return require("packer").startup(function(use)
   use "sbdchd/neoformat"
 
   -- Organizer
-  use { "nvim-neorg/neorg", requires = "nvim-lua/plenary.nvim" }
+  use { "nvim-neorg/neorg", run = ":Neorg sync-parsers", requires = "nvim-lua/plenary.nvim" }
 
   -- Markdown preview
   use {
