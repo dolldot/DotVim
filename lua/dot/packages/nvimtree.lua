@@ -37,18 +37,4 @@ _M.toggle_tree = function()
   end
 end
 
-_M.toggle_tree_long = function()
-  nvim_tree.setup { view = { width = 40 } }
-  if view.is_visible() then
-    -- require"nvim-tree".close()
-    view.close()
-    require"bufferline.api".set_offset(0)
-  else
-    require"bufferline.api".set_offset(31, "File Explorer")
-    -- view.open()
-    vim.cmd("NvimTreeToggle")
-  end
-  nvim_tree.setup { view = { width = 30 } }
-end
-
 return _M

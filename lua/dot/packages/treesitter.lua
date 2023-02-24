@@ -30,7 +30,22 @@ parser_configs.norg_table = {
 }
 
 configs.setup {
-  ensure_installed = { "bash", "css", "dockerfile", "go", "html", "javascript", "json", "lua", "python", "terraform", "tsx", "typescript", "vim", "yaml"},
+  ensure_installed = {
+    "bash",
+    "css",
+    "dockerfile",
+    "go",
+    "html",
+    "javascript",
+    "json",
+    "lua",
+    "python",
+    "terraform",
+    "tsx",
+    "typescript",
+    "vim",
+    "yaml",
+  },
   sync_install = false,
   ignore_install = { "" },
   autopairs = { enable = true },

@@ -39,7 +39,7 @@ end
 function config.on_attach(client, bufnr)
   lsp_keymap(bufnr)
   if client.server_capabilities.document_highlight then
-    require("dot.core.utils").setup_document_highlight(bufnr)
+    require("dot.utils").setup_document_highlight(bufnr)
   end
 end
 

@@ -46,7 +46,7 @@ return require("packer").startup(function(use)
     "glepnir/dashboard-nvim",
     event = "VimEnter",
     config = function()
-      require "dot.config.dashboard"
+      require "dot.packages.dashboard"
     end,
     requires = { "nvim-tree/nvim-web-devicons" },
   }
@@ -79,7 +79,7 @@ return require("packer").startup(function(use)
   use {
     "folke/which-key.nvim",
     config = function()
-      require "dot.config.which-key"
+      require "dot.packages.which-key"
     end,
   }
 

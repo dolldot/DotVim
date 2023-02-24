@@ -1,4 +1,4 @@
-local utils = require("dot.core.utils")
+local utils = require("dot.utils")
 local nmap = utils.set_keymapn
 local vmap = utils.set_keymapv
 local xmap = utils.set_keymapx
@@ -33,7 +33,7 @@ xmap("J", ":move '>+1<CR>gv-gv'")
 
 -- Toggle tree
 -- nmap("<Leader>e", ":NvimTreeToggle<CR>")
-nmap("<Leader>e", "<cmd>lua require'dot.config.nvimtree'.toggle_tree()<CR>")
+nmap("<Leader>e", "<cmd>lua require'dot.packages.nvimtree'.toggle_tree()<CR>")
 
 -- Dashboard
 nmap("<Leader>;", ":Dashboard<CR>")

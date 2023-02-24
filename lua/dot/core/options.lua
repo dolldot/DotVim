@@ -1,14 +1,3 @@
-local cmd = vim.cmd
--- local opt = vim.opt
-
---- TRANSPARENT BACKGROUND ---
--- cmd "au ColorScheme * hi Normal ctermbg=none guibg=none"
--- cmd "au ColorScheme * hi SignColumn ctermbg=none guibg=none"
-
---- COLORSCHEME ---
--- cmd "colorscheme darkplus"
-cmd "colorscheme tokyonight-night"
-
 local options = {
   encoding = "utf-8",
   fileencoding = "utf-8",
@@ -47,11 +36,5 @@ local options = {
   completeopt = "menuone,noselect",
   cmdheight = 2,
 }
-
--- opt.shortmess:append "c"
-
--- for k, v in pairs(options) do
---   vim.opt[k] = v
--- end
 
 return options
