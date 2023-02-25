@@ -5,8 +5,9 @@ end
 
 nvim_tree.setup {
   open_on_setup = false,
-  update_cwd = true,
-  update_focused_file = { enable = true, update_cwd = true },
+  sync_root_with_cwd = true,
+  respect_buf_cwd = true,
+  update_focused_file = { enable = true, update_root = true },
   diagnostics = { enable = false },
   filters = { dotfiles = false, custom = { ".git", "node_modules", ".cache" } },
   git = { enable = true, ignore = true, timeout = 500 },
