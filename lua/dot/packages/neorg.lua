@@ -11,6 +11,7 @@ neorg.setup {
     ["core.norg.dirman"] = {
       config = {
         workspaces = { mine = "~/Mine/dolldot/neorg", work = "~/Mine/mora/OPS/notes" },
+        default_workspace = "mine",
         autochdir = true,
         index = "main.norg",
       },
