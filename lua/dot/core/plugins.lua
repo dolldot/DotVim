@@ -46,7 +46,7 @@ return require("packer").startup(function(use)
     "glepnir/dashboard-nvim",
     event = "VimEnter",
     config = function()
-      require "dot.packages.dashboard"
+      require "dot.plugin.dashboard"
     end,
     requires = { "nvim-tree/nvim-web-devicons" },
   }
@@ -79,7 +79,7 @@ return require("packer").startup(function(use)
   use {
     "folke/which-key.nvim",
     config = function()
-      require "dot.packages.which-key"
+      require "dot.plugin.which-key"
     end,
   }
 
@@ -97,6 +97,19 @@ return require("packer").startup(function(use)
     "ellisonleao/glow.nvim",
     config = function()
       require("glow").setup()
+    end,
+  }
+
+  -- Project
+  use {
+    "ahmedkhalf/project.nvim",
+    config = function()
+      require("project_nvim").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+        manual_mode = true,
+      }
     end,
   }
 

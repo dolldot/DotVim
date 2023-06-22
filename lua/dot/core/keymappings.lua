@@ -33,7 +33,7 @@ xmap("J", ":move '>+1<CR>gv-gv'")
 
 -- Toggle tree
 -- nmap("<Leader>e", ":NvimTreeToggle<CR>")
-nmap("<Leader>e", "<cmd>lua require'dot.packages.nvimtree'.toggle_tree()<CR>")
+nmap("<Leader>e", "<cmd>lua require'dot.plugin.nvimtree'.toggle_tree()<CR>")
 
 -- Dashboard
 nmap("<Leader>;", ":Dashboard<CR>")

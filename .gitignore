@@ -1,2 +1,3 @@
 ftplugin
-plugin
+plugin/*
+!**/plugin

@@ -5,4 +5,4 @@ require("dot.core")
 require("dot.lsp")
 
 -- Package config
-require("dot.packages")
+require("dot.plugin")

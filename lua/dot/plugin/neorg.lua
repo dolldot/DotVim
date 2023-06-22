@@ -6,9 +6,9 @@ end
 neorg.setup {
   load = {
     ["core.defaults"] = {},
-    ["core.norg.concealer"] = {},
+    ["core.concealer"] = {},
     ["core.keybinds"] = { config = { default_keybinds = true, neorg_leader = "<Leader>o" } },
-    ["core.norg.dirman"] = {
+    ["core.dirman"] = {
       config = {
         workspaces = { mine = "~/Mine/dolldot/neorg", work = "~/Mine/mora/OPS/notes" },
         default_workspace = "mine",
@@ -16,6 +16,6 @@ neorg.setup {
         index = "main.norg",
       },
     },
-    ["core.norg.completion"] = { config = { engine = "nvim-cmp" } },
+    ["core.completion"] = { config = { engine = "nvim-cmp" } },
   },
 }
