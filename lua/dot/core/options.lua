@@ -1,3 +1,5 @@
+vim.api.nvim_win_set_option(0, "number", true)
+
 local options = {
   encoding = "utf-8",
   fileencoding = "utf-8",
