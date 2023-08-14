@@ -1,9 +1,6 @@
-local status, lualine = pcall(require, "lualine")
-if (not status) then
-  return
-end
+local M = {}
 
-lualine.setup {
+local config = {
   options = {
     icons_enabled = true,
     theme = "solarized_dark",
@@ -37,5 +34,16 @@ lualine.setup {
     lualine_z = {},
   },
   tabline = {},
-  extensions = { "nvim-tree" },
+  extensions = {},
 }
+
+M.setup = function()
+  local status, lualine = pcall(require, "lualine")
+  if (not status) then
+    return
+  end
+
+  lualine.setup(config)
+end
+
+return M

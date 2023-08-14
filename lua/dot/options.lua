@@ -1,6 +1,8 @@
+local M = {}
+
 vim.api.nvim_win_set_option(0, "number", true)
 
-local options = {
+M.options = {
   encoding = "utf-8",
   fileencoding = "utf-8",
   termguicolors = true,
@@ -31,7 +33,7 @@ local options = {
   signcolumn = "yes",
   clipboard = "unnamedplus",
   swapfile = false,
-  timeoutlen = 100,
+  timeoutlen = 500,
   hidden = true,
   colorcolumn = "120",
   conceallevel = 0,
@@ -39,4 +41,28 @@ local options = {
   cmdheight = 2,
 }
 
-return options
+-- M.plugins = {
+--   nvim_lspconfig = true,
+--   lsp_zero = true,
+--   nvim_cmp = true,
+--   luasnip = true,
+--   mason = true,
+--   mason_lsp_config = true,
+--   treesitter = true,
+--   autopairs = true,
+--   neoformat = true,
+--   telescope = true,
+--   devicons = true,
+--   lualine = true,
+--   neotree = true,
+--   bufferline = true,
+--   dashboard = true,
+--   tokyonight = true,
+--   noice = true,
+--   comment = true,
+--   which_key = true,
+--   toggleterm = true,
+--   indent_blankline = true,
+-- }
+
+return M

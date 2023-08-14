@@ -14,13 +14,15 @@ nmap("sk", "<C-w>k")
 nmap("sj", "<C-w>j")
 nmap("sl", "<C-w>l")
 
+nmap("<C-j>", "<C-w>l")
+
 -- Split window
 nmap("ss", ":split<Return><C-w>w")
 nmap("sv", ":vsplit<Return><C-w>w")
 
 -- Buffer navigation
-nmap("s>", "<cmd>BufferNext<CR>")
-nmap("s<", "<cmd>BufferPrevious<CR>")
+nmap("s>", "<cmd>BufferLineMoveNext<CR>")
+nmap("s<", "<cmd>BufferLineMovePrev<CR>")
 nmap("sc", "<cmd>BufferClose<CR>")
 
 -- Indentation
@@ -31,16 +33,6 @@ vmap(">", ">gv")
 xmap("K", ":move '<-2<CR>gv-gv'")
 xmap("J", ":move '>+1<CR>gv-gv'")
 
--- Toggle tree
--- nmap("<Leader>e", ":NvimTreeToggle<CR>")
-nmap("<Leader>e", "<cmd>lua require'dot.plugin.nvimtree'.toggle_tree()<CR>")
-
--- Dashboard
-nmap("<Leader>;", ":Dashboard<CR>")
-
--- Telescope find files
-nmap("<Leader>f", "<cmd>Telescope find_files<CR>")
-
 -- Save
 nmap("<Leader>w", ":w!<CR>")
 
@@ -50,21 +42,20 @@ nmap("<Leader>q", ":q!<CR>")
 -- Select all
 nmap("<Leader>a", "gg<S-v>G")
 
--- Open Lazygit
-nmap("<Leader>g", "<cmd>lua _LAZYGIT_TOGGLE()<CR>")
+-- Toggle tree
+nmap("<Leader>e", ":Neotree toggle<CR>")
 
--- Reloading vimrc
-nmap("<Leader>r", ":source $MYVIMRC<CR>")
-
--- Glow markdown preview
-nmap("<Leader>p", "<cmd>Glow<CR>")
+-- Dashboard
+nmap("<Leader>;", ":Dashboard<CR>")
 
 -- Mason
 nmap("<Leader>m", "<cmd>Mason<CR>")
 
--- I hate esc
--- currently not working because which-key setup
--- vim.api.nvim_set_keymap("i", "jj", "<ESC>", opts)
+-- LSP
+nmap("<Leader>d", vim.diagnostic.open_float)
+
+-- Custom
+nmap("<Leader>s", require("dot.utils.custom").search)
 
 -- Set terminal keymaps
 function _G.set_terminal_keymaps()

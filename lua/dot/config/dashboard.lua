@@ -1,9 +1,6 @@
-local ok, dashboard = pcall(require, "dashboard")
-if not ok then
-  return
-end
+local M = {}
 
-dashboard.setup {
+local config = {
   theme = "doom",
   config = {
     header = {
@@ -50,3 +47,17 @@ dashboard.setup {
   },
   1,
 }
+
+M.setup = function()
+  local ok, dashboard = pcall(require, "dashboard")
+  if not ok then
+    return
+  end
+
+  vim.cmd [[
+    let g:indent_blankline_filetype_exclude = ["dashboard"]
+  ]]
+  dashboard.setup(config)
+end
+
+return M
