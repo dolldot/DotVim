@@ -184,6 +184,19 @@ local plugins = {
     end,
     enabled = true,
   },
+  {
+    "famiu/bufdelete.nvim",
+    enabled = true,
+  },
+  {
+    's1n7ax/nvim-window-picker',
+    name = 'window-picker',
+    event = 'VeryLazy',
+    version = '2.*',
+    config = function()
+        require'window-picker'.setup()
+    end,
+  }
 }
 -- LuaFormatter on
 require("lazy").setup(plugins)
