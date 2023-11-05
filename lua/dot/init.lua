@@ -5,7 +5,8 @@ require("dot.plugins")
 local utils = require("dot.utils")
 local options = require("dot.options")
 
-vim.cmd "colorscheme tokyonight-night"
+-- vim.cmd "colorscheme tokyonight-night"
+vim.cmd "colorscheme catppuccin-mocha"
 
 utils.set_options(options.options)
 utils.define_augroups {

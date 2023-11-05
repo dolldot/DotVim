@@ -58,15 +58,15 @@ nmap("<Leader>d", vim.diagnostic.open_float)
 nmap("<Leader>s", require("dot.utils.custom").search)
 
 -- Set terminal keymaps
--- function _G.set_terminal_keymaps()
---   tmap("<esc>", [[<C-\><C-n>]])
---   tmap("jk", [[<C-\><C-n>]])
---   tmap("<C-h>", [[<Cmd>wincmd h<CR>]])
---   tmap("<C-j>", [[<Cmd>wincmd j<CR>]])
---   tmap("<C-k>", [[<Cmd>wincmd k<CR>]])
---   tmap("<C-l>", [[<Cmd>wincmd l<CR>]])
---   tmap("<C-w>", [[<C-\><C-n><C-w>]])
--- end
+function _G.set_terminal_keymaps()
+  tmap("<esc>", [[<C-\><C-n>]])
+  tmap("jk", [[<C-\><C-n>]])
+  tmap("<C-h>", [[<Cmd>wincmd h<CR>]])
+  tmap("<C-j>", [[<Cmd>wincmd j<CR>]])
+  tmap("<C-k>", [[<Cmd>wincmd k<CR>]])
+  tmap("<C-l>", [[<Cmd>wincmd l<CR>]])
+  tmap("<C-w>", [[<C-\><C-n><C-w>]])
+end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
