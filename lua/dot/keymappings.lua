@@ -14,6 +14,11 @@ nmap("sk", "<C-w>k")
 nmap("sj", "<C-w>j")
 nmap("sl", "<C-w>l")
 
+nmap("<C-h>", "<cmd>TmuxNavigateLeft<CR>")
+nmap("<C-l>", "<cmd>TmuxNavigateRight<CR>")
+nmap("<C-j>", "<cmd>TmuxNavigateDown<CR>")
+nmap("<C-k>", "<cmd>TmuxNavigateUp<CR>")
+
 nmap("<C-j>", "<C-w>l")
 
 -- Split window
@@ -21,9 +26,9 @@ nmap("ss", ":split<Return><C-w>w")
 nmap("sv", ":vsplit<Return><C-w>w")
 
 -- Buffer navigation
-nmap("s>", "<cmd>BufferLineMoveNext<CR>")
-nmap("s<", "<cmd>BufferLineMovePrev<CR>")
-nmap("sc", "<cmd>BufferClose<CR>")
+nmap("s>", "<cmd>bnext<CR>")
+nmap("s<", "<cmd>bprev<CR>")
+nmap("sc", "<cmd>Bdelete<CR>")
 
 -- Indentation
 vmap("<", "<gv")
@@ -35,9 +40,11 @@ xmap("J", ":move '>+1<CR>gv-gv'")
 
 -- Save
 nmap("<Leader>w", ":w!<CR>")
+nmap("<Leader>s", ":w!<CR>")
 
 -- Quit
 nmap("<Leader>q", ":q!<CR>")
+nmap("<Leader>.", ":q!<CR>")
 
 -- Select all
 nmap("<Leader>a", "gg<S-v>G")
@@ -55,7 +62,8 @@ nmap("<Leader>m", "<cmd>Mason<CR>")
 nmap("<Leader>d", vim.diagnostic.open_float)
 
 -- Custom
-nmap("<Leader>s", require("dot.utils.custom").search)
+-- nmap("<Leader>s", require("dot.utils.custom").search)
+-- nmap("<Leader>c", require("dot.utils").switch_neotree_pos)
 
 -- Set terminal keymaps
 function _G.set_terminal_keymaps()

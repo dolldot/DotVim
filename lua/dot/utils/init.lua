@@ -5,11 +5,7 @@ function utils.define_augroups(definitions)
     vim.api.nvim_create_augroup(group, { clear = false })
 
     for _, item in pairs(definition) do
-      vim.api.nvim_create_autocmd(item[1], {
-        group = group,
-        pattern = item[2],
-        command = item[3],
-      })
+      vim.api.nvim_create_autocmd(item[1], { group = group, pattern = item[2], command = item[3] })
     end
   end
 end
@@ -72,5 +68,26 @@ function utils.open_terminal()
 
   lazygit:toggle()
 end
+
+-- function utils.switch_neotree_pos()
+--   local conf = _G.dotneotreeconfig
+--   local pos = conf.window.position
+--   if pos == "left" then
+--     conf.window.position = "float"
+--   elseif pos == "float" then
+--     conf.window.position = "left"
+--   end
+--   _G.dotneotreeconfig = conf
+--   local ok, lazy = pcall(require, "lazy")
+--   if not ok then
+--     return
+--   end
+--   -- local optss = { plugins = { name = "neo-tree.nvim" } }
+--   -- local plugin = lazy.plugins["neo-tree.nvim"]
+--
+--   -- lazy.reload({ plugins = { name = "neo-tree.nvim" } })
+--   -- vim.api.nvim_command()
+--   require("lazy.core.loader").reload({ "neo-tree.nvim" })
+-- end
 
 return utils

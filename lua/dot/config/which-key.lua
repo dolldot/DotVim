@@ -17,7 +17,6 @@ local mappings = {
   ["q"] = "Quit",
   ["d"] = "Diagnostic",
   ["e"] = "File explorer",
-  ["f"] = "Find file",
   ["p"] = "Markdown preview",
   ["m"] = "Mason",
   ["s"] = "Search",
@@ -40,8 +39,8 @@ local mappings = {
     i = { "<cmd>LspInstall<CR>", "Install" },
   },
   P = { name = "Plugin", l = { "<cmd>Lazy<CR>", "Lazy" } },
-  S = {
-    name = "Search",
+  f = {
+    name = "Telescope",
     b = { "<cmd>Telescope git_branches<CR>", "Checkout Branch" },
     c = { "<cmd>Telescope colorscheme<CR>", "Colorscheme" },
     f = { "<cmd>Telescope find_files<CR>", "Find File" },
@@ -49,7 +48,7 @@ local mappings = {
     M = { "<cmd>Telescope man_pages<CR>", "Man Pages" },
     r = { "<cmd>Telescope oldfiles<CR>", "Open Recent File" },
     R = { "<cmd>Telescope registers<CR>", "Registers" },
-    t = { "<cmd>Telescope live_grep<CR>", "Text" },
+    w = { "<cmd>Telescope live_grep<CR>", "Word" },
   },
   T = { name = "Treesitter", i = { "<cmd>TSConfigInfo<CR>", "Info" } },
 }

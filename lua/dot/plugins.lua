@@ -197,7 +197,15 @@ local plugins = {
         require'window-picker'.setup()
     end,
   },
-  { "catppuccin/nvim", name = "catppuccin", priority = 1000 }
+  {
+    "christoomey/vim-tmux-navigator",
+    lazy = false,
+  },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000
+  },
 }
 -- LuaFormatter on
 require("lazy").setup(plugins)
