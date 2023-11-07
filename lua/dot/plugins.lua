@@ -208,6 +208,10 @@ local plugins = {
     name = "lspkind",
   },
   {
+    "folke/trouble.nvim",
+    enabled = true,
+  },
+  {
     "catppuccin/nvim",
     name = "catppuccin",
     priority = 1000

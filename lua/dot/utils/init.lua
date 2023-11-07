@@ -69,25 +69,27 @@ function utils.open_terminal()
   lazygit:toggle()
 end
 
--- function utils.switch_neotree_pos()
---   local conf = _G.dotneotreeconfig
---   local pos = conf.window.position
---   if pos == "left" then
---     conf.window.position = "float"
---   elseif pos == "float" then
---     conf.window.position = "left"
---   end
---   _G.dotneotreeconfig = conf
---   local ok, lazy = pcall(require, "lazy")
---   if not ok then
---     return
---   end
---   -- local optss = { plugins = { name = "neo-tree.nvim" } }
---   -- local plugin = lazy.plugins["neo-tree.nvim"]
---
---   -- lazy.reload({ plugins = { name = "neo-tree.nvim" } })
---   -- vim.api.nvim_command()
---   require("lazy.core.loader").reload({ "neo-tree.nvim" })
--- end
+function utils.switch_neotree_pos()
+  local conf = _G.dotneotreeconfig
+  local pos = conf.window.position
+  if pos == "left" then
+    conf.window.position = "float"
+  elseif pos == "float" then
+    conf.window.position = "left"
+  end
+  _G.dotneotreeconfig = conf
+  vim.cmd "Lazy reload neo-tree.nvim"
+
+  -- local ok, lazy = pcall(require, "lazy")
+  -- if not ok then
+  --   return
+  -- end
+  -- -- -- local optss = { plugins = { name = "neo-tree.nvim" } }
+  -- -- -- local plugin = lazy.plugins["neo-tree.nvim"]
+  -- --
+  -- -- -- lazy.reload({ plugins = { name = "neo-tree.nvim" } })
+  -- -- -- vim.api.nvim_command()
+  -- require("lazy.core.loader").reload({ "neo-tree.nvim" })
+end
 
 return utils

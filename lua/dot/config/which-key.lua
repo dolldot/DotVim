@@ -37,6 +37,7 @@ local mappings = {
     f = { "<cmd>Neoformat<CR>", "Format" },
     l = { "<cmd>LspInfo<CR>", "Info" },
     i = { "<cmd>LspInstall<CR>", "Install" },
+    t = { "<cmd>Trouble<CR>", "Trouble" },
   },
   P = { name = "Plugin", l = { "<cmd>Lazy<CR>", "Lazy" } },
   f = {
