@@ -9,11 +9,7 @@ function M.diagnostic()
   }
 
   for _, sign in ipairs(signs) do
-    vim.fn.sign_define(sign.name, {
-      texthl = sign.name,
-      text = sign.text,
-      numhl = "",
-    })
+    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
   end
 
   local opts = {
@@ -32,9 +28,7 @@ function M.diagnostic()
   }
 
   vim.diagnostic.config(opts)
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "rounded",
-  })
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
     border = "rounded",
   })
@@ -43,33 +37,32 @@ end
 function M.cmp()
   local icons = {
     Text = "",
-    Method = "",
-    Function = "",
-    Constructor = "",
-    Field = "",
-    Variable = "",
-    Class = "",
+    Method = "󰆧",
+    Function = "󰊕",
+    Constructor = "",
+    Field = "󰇽",
+    Variable = "󰂡",
+    Class = "󰠱",
     Interface = "",
     Module = "",
-    Property = "",
+    Property = "󰜢",
     Unit = "",
-    Value = "",
-    Enum = "",
-    Keyword = "",
-    Snippet = "",
-    Color = "",
-    File = "",
+    Value = "󰎠",
+    Enum = "",
+    Keyword = "󰌋",
+    Snippet = "",
+    Color = "󰏘",
+    File = "󰈙",
     Reference = "",
-    Folder = "",
+    Folder = "󰉋",
     EnumMember = "",
-    Constant = "",
+    Constant = "󰏿",
     Struct = "",
     Event = "",
-    Operator = "",
-    TypeParameter = "",
+    Operator = "󰆕",
+    TypeParameter = "󰅲",
   }
 
-  -- local cmp = require('cmp')
   local cmp_ok, cmp = pcall(require, "cmp")
   if not cmp_ok then
     return
@@ -93,7 +86,7 @@ function M.cmp()
       { name = "luasnip" },
       { name = "buffer" },
       { name = "path" },
-      { name = "cmdline" },
+      -- { name = "cmdline" },
     },
     mapping = {
       ["<CR>"] = cmp.mapping.confirm { select = true },
@@ -121,19 +114,15 @@ function M.cmp()
       end, { "i", "s" }),
     },
     formatting = {
-      fields = { "kind", "abbr", "menu" },
+      fields = { "abbr", "kind", "menu" },
       format = function(entry, item)
-        item.kind = string.format("%s", icons[item.kind])
-        item.menu = ({
-          nvim_lsp = "[LSP]",
-          nvim_lua = "[Lua]",
-          luasnip = "[Snippet]",
-          neorg = "[Neorg]",
-          buffer = "[Buffer]",
-          path = "[Path]",
-          cmdline = "[Cmdline]",
-        })[entry.source.name]
-        return item
+        local lspkind_ok, lspkind = pcall(require, "lspkind")
+        if not lspkind_ok then
+          item.kind = string.format("%s %s", icons[item.kind], item.kind)
+          return item
+        else
+          return lspkind.cmp_format()(entry, item)
+        end
       end,
     },
     window = {

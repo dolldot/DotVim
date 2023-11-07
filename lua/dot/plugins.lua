@@ -196,10 +196,16 @@ local plugins = {
     config = function()
         require'window-picker'.setup()
     end,
+    enabled = true,
   },
   {
     "christoomey/vim-tmux-navigator",
     lazy = false,
+    enabled = true,
+  },
+  {
+    "onsails/lspkind.nvim",
+    name = "lspkind",
   },
   {
     "catppuccin/nvim",

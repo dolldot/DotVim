@@ -25,12 +25,7 @@ local config = {
     return "(" .. count .. ")"
   end,
   offsets = {
-    {
-      filetype = "neo-tree",
-      text = "File Explorer",
-      text_align = "left",
-      separator = true,
-    },
+    { filetype = "neo-tree", text = "File Explorer", text_align = "left", separator = true },
   },
   color_icons = true, -- whether or not to add the filetype icon highlights
   get_element_icon = function(element)
