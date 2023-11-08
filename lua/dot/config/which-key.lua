@@ -42,7 +42,7 @@ local mappings = {
   P = { name = "Plugin", l = { "<cmd>Lazy<CR>", "Lazy" } },
   f = {
     name = "Telescope",
-    b = { "<cmd>Telescope git_branches<CR>", "Checkout Branch" },
+    b = { "<cmd>Telescope buffers<CR>", "Buffers" },
     c = { "<cmd>Telescope colorscheme<CR>", "Colorscheme" },
     f = { "<cmd>Telescope find_files<CR>", "Find File" },
     h = { "<cmd>Telescope help_tags<CR>", "Find Help" },

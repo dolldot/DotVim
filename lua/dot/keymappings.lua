@@ -28,7 +28,12 @@ nmap("sv", ":vsplit<Return><C-w>w")
 -- Buffer navigation
 nmap("s>", "<cmd>bnext<CR>")
 nmap("s<", "<cmd>bprev<CR>")
-nmap("sc", "<cmd>Bdelete<CR>")
+nmap("sq", "<cmd>Bdelete<CR>")
+
+-- Tab navigation
+nmap("sn", "<cmd>tabn<CR>")
+nmap("sp", "<cmd>tabp<CR>")
+nmap("sc", "<cmd>tabnew<CR>")
 
 -- Indentation
 vmap("<", "<gv")
@@ -65,6 +70,9 @@ nmap("<Leader>d", vim.diagnostic.open_float)
 nmap("<Leader>xx", function()
   require("trouble").toggle()
 end)
+
+-- Toggle list buffers
+nmap("<Leader>b", "<cmd>Telescope buffers<CR>")
 
 -- Custom
 -- nmap("<Leader>s", require("dot.utils.custom").search)

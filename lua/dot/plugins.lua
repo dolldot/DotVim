@@ -94,6 +94,11 @@ local plugins = {
     enabled = true,
   },
   {
+    "nvim-lua/plenary.nvim",
+    lazy = false,
+    enabled = true,
+  },
+  {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v3.x",
     config = function()
@@ -111,7 +116,7 @@ local plugins = {
     config = function()
       require("dot.config.bufferline").setup()
     end,
-    enabled = true,
+    enabled = false,
   },
   {
     "glepnir/dashboard-nvim",
