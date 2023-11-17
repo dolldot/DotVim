@@ -13,6 +13,7 @@ local opts = {
 
 local mappings = {
   ["a"] = "Select all",
+  ["c"] = "Custom function",
   ["w"] = "Save",
   ["q"] = "Quit",
   ["d"] = "Diagnostic",
