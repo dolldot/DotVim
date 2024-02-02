@@ -180,6 +180,10 @@ local plugins = {
   },
   {
     "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {
+      exclude = { filetypes = { "dashboard" }}
+    },
     enabled = true,
   },
   {
