@@ -7,7 +7,6 @@ local config = {
   ignore_install = {},
   highlight = { enable = true },
   indent = { enable = true, disable = { "yaml" } },
-  context_commentstring = { enable = true, enable_autocmd = false },
 }
 
 M.setup = function()
