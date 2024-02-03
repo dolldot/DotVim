@@ -229,7 +229,7 @@ local plugins = {
     "jackMort/ChatGPT.nvim",
     event = "VeryLazy",
     config = function()
-      require("chatgpt").setup()
+      require("dot.config.chatgpt").setup()
     end,
     dependencies = {
       "MunifTanjim/nui.nvim",
