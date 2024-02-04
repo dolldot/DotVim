@@ -15,7 +15,7 @@ local config = {
   sections = {
     lualine_a = { "mode" },
     lualine_b = { "branch" },
-    lualine_c = { "filename" },
+    lualine_c = { { "filename", path = 1 } },
     lualine_x = {
       {
         "diagnostics",
@@ -29,12 +29,12 @@ local config = {
     lualine_z = { "location" },
   },
   inactive_sections = {
-    lualine_a = {},
+    lualine_a = { { "filename", path = 1 } },
     lualine_b = {},
-    lualine_c = { "filename" },
-    lualine_x = { "location" },
+    lualine_c = {},
+    lualine_x = {},
     lualine_y = {},
-    lualine_z = {},
+    lualine_z = { "location" },
   },
   tabline = {
     lualine_a = { "filename" },
