@@ -42,6 +42,12 @@ local mappings = {
       mode = { "n", "v" },
     },
   },
+  n = {
+    name = "Notes",
+    a = { "<cmd>ZenMode | Pencil<CR>", "ZenMode with Pencil" },
+    z = { "<cmd>ZenMode<CR>", "ZenMode" },
+    t = { "<cmd>Twilight<CR>", "Twilight" },
+  },
   t = {
     name = "Terminal",
     b = { "<cmd>:ToggleTerm size=18 direction=horizontal<CR>", "Terminal Bottom" },

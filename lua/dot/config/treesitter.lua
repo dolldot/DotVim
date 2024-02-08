@@ -1,7 +1,16 @@
 local M = {}
 
 local config = {
-  ensure_installed = { "lua", "regex", "markdown", "markdown_inline" },
+  ensure_installed = {
+    "lua",
+    "yaml",
+    "terraform",
+    "go",
+    "python",
+    "regex",
+    "markdown",
+    "markdown_inline",
+  },
   sync_install = false,
   auto_install = true,
   ignore_install = {},

@@ -45,7 +45,7 @@ local plugins = {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup{
-        ensure_installed = { "lua_ls", "yamlls", "terraformls", "gopls", "tsserver" }
+        ensure_installed = { "lua_ls", "yamlls", "terraformls", "gopls", "tsserver", "pylsp" }
       }
     end,
     cmd = { "LspInstall", "LspUninstall" },
@@ -237,7 +237,21 @@ local plugins = {
       "folke/trouble.nvim",
       "nvim-telescope/telescope.nvim"
     }
-  }
+  },
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+  },
+  "folke/twilight.nvim",
+  "preservim/vim-pencil",
+  {
+    "folke/zen-mode.nvim",
+    config = function()
+      require("dot.config.zen-mode").setup()
+    end,
+  },
 }
 -- LuaFormatter on
 require("lazy").setup(plugins)
