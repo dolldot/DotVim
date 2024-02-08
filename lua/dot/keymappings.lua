@@ -76,7 +76,7 @@ nmap("<Leader>b", "<cmd>Telescope buffers<CR>")
 
 -- Custom
 -- nmap("<Leader>s", require("dot.utils.custom").search)
-nmap("<Leader>cn", require("dot.utils").switch_neotree_pos)
+-- nmap("<Leader>cn", require("dot.utils").switch_neotree_pos)
 
 -- Set terminal keymaps
 function _G.set_terminal_keymaps()
