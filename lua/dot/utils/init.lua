@@ -33,9 +33,19 @@ function utils.set_options(options)
   end
 end
 
+-- dynamic mode mapping
+function utils.set_keymapd(modes, key, func, desc)
+  local description = desc or ""
+  local opts = { noremap = true, silent = true, desc = description }
+  for _, v in ipairs(modes) do
+    vim.keymap.set(v, key, func, opts)
+  end
+end
+
 -- normal mode mapping
-function utils.set_keymapn(key, func)
-  local default_opts = { noremap = true, silent = true }
+function utils.set_keymapn(key, func, desc)
+  local description = desc or ""
+  local default_opts = { noremap = true, silent = true, desc = description }
   vim.keymap.set("n", key, func, default_opts)
 end
 
@@ -69,27 +79,27 @@ function utils.open_terminal()
   lazygit:toggle()
 end
 
-function utils.switch_neotree_pos()
-  local conf = _G.dotneotreeconfig
-  local pos = conf.window.position
-  if pos == "left" then
-    conf.window.position = "float"
-  elseif pos == "float" then
-    conf.window.position = "left"
-  end
-  _G.dotneotreeconfig = conf
-  vim.cmd "Lazy reload neo-tree.nvim"
-
-  -- local ok, lazy = pcall(require, "lazy")
-  -- if not ok then
-  --   return
-  -- end
-  -- -- -- local optss = { plugins = { name = "neo-tree.nvim" } }
-  -- -- -- local plugin = lazy.plugins["neo-tree.nvim"]
-  -- --
-  -- -- -- lazy.reload({ plugins = { name = "neo-tree.nvim" } })
-  -- -- -- vim.api.nvim_command()
-  -- require("lazy.core.loader").reload({ "neo-tree.nvim" })
-end
+-- function utils.switch_neotree_pos()
+--   local conf = _G.dotneotreeconfig
+--   local pos = conf.window.position
+--   if pos == "left" then
+--     conf.window.position = "float"
+--   elseif pos == "float" then
+--     conf.window.position = "left"
+--   end
+--   _G.dotneotreeconfig = conf
+--   vim.cmd "Lazy reload neo-tree.nvim"
+--
+--   -- local ok, lazy = pcall(require, "lazy")
+--   -- if not ok then
+--   --   return
+--   -- end
+--   -- -- -- local optss = { plugins = { name = "neo-tree.nvim" } }
+--   -- -- -- local plugin = lazy.plugins["neo-tree.nvim"]
+--   -- --
+--   -- -- -- lazy.reload({ plugins = { name = "neo-tree.nvim" } })
+--   -- -- -- vim.api.nvim_command()
+--   -- require("lazy.core.loader").reload({ "neo-tree.nvim" })
+-- end
 
 return utils

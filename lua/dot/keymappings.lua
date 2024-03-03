@@ -9,17 +9,19 @@ nmap("<Space>", "<NOP>")
 vim.g.mapleader = " "
 
 -- Window movement
-nmap("sh", "<C-w>h")
-nmap("sk", "<C-w>k")
-nmap("sj", "<C-w>j")
-nmap("sl", "<C-w>l")
+-- nmap("sh", "<C-w>h")
+-- nmap("sk", "<C-w>k")
+-- nmap("sj", "<C-w>j")
+-- nmap("sl", "<C-w>l")
 
 nmap("<C-h>", "<cmd>TmuxNavigateLeft<CR>")
 nmap("<C-l>", "<cmd>TmuxNavigateRight<CR>")
 nmap("<C-j>", "<cmd>TmuxNavigateDown<CR>")
 nmap("<C-k>", "<cmd>TmuxNavigateUp<CR>")
 
-nmap("<C-j>", "<C-w>l")
+-- Window Adjustment
+nmap("<Leader>z", "<C-w>|", "Focus Window")
+nmap("<Leader>=", "<C-w>=", "Resize Window")
 
 -- Split window
 nmap("ss", ":split<Return><C-w>w")
@@ -44,41 +46,44 @@ xmap("K", ":move '<-2<CR>gv-gv'")
 xmap("J", ":move '>+1<CR>gv-gv'")
 
 -- Save
-nmap("<Leader>w", ":w!<CR>")
-nmap("<Leader>s", ":w!<CR>")
+nmap("<Leader>w", ":w!<CR>", "Save")
+nmap("<Leader>s", ":w!<CR>", "Save")
 
 -- Quit
-nmap("<Leader>q", ":q!<CR>")
-nmap("<Leader>.", ":q!<CR>")
+nmap("<Leader>q", ":q!<CR>", "Quit")
+nmap("<Leader>.", ":q!<CR>", "Quit")
 
 -- Select all
-nmap("<Leader>a", "gg<S-v>G")
+nmap("<Leader>o", "gg<S-v>G", "Select all")
 
 -- Toggle tree
-nmap("<Leader>e", ":Neotree toggle<CR>")
+-- nmap("<Leader>e", ":Neotree toggle<CR>")
+nmap("<Leader>e", ":Explore<CR>", "File Explorer")
 
 -- Dashboard
-nmap("<Leader>;", ":Dashboard<CR>")
+nmap("<Leader>;", ":Dashboard<CR>", "Dashboard")
 
--- Mason
-nmap("<Leader>m", "<cmd>Mason<CR>")
+-- Package Manager
+nmap("<Leader>pm", "<cmd>Mason<CR>", "Mason")
+nmap("<Leader>pl", "<cmd>Lazy<CR>", "Lazy")
 
 -- LSP
-nmap("<Leader>d", vim.diagnostic.open_float)
+nmap("<Leader>la", "<cmd>LspInstall<CR>", "Install")
+nmap("<Leader>lf", "<cmd>Neoformat<CR>", "Format")
+nmap("<Leader>li", "<cmd>LspInfo<CR>", "Info")
+nmap("<Leader>lt", "<cmd>Trouble<CR>", "Trouble")
 
--- Trouble
-nmap("<Leader>xx", function()
-  require("trouble").toggle()
-end)
-
--- Toggle list buffers
-nmap("<Leader>b", "<cmd>Telescope buffers<CR>")
+-- Editing Mode
+nmap("<Leader>ma", "<cmd>ZenMode | Pencil<CR>", "ZenMode with Pencil")
+nmap("<Leader>mt", "<cmd>Twilight<CR>", "Twilight")
+nmap("<Leader>mz", "<cmd>ZenMode<CR>", "ZenMode")
 
 -- Custom
 -- nmap("<Leader>s", require("dot.utils.custom").search)
 -- nmap("<Leader>cn", require("dot.utils").switch_neotree_pos)
 
 -- Set terminal keymaps
+nmap("<Leader>t", "<cmd>:ToggleTerm size=18 direction=horizontal<CR>", "Terminal")
 function _G.set_terminal_keymaps()
   tmap("<esc>", [[<C-\><C-n>]])
   tmap("jk", [[<C-\><C-n>]])
