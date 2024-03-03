@@ -29,16 +29,16 @@ M.options = {
   showmode = false,
   cursorline = true,
   laststatus = 2,
-  showtabline = 2,
+  -- showtabline = 2,
   signcolumn = "yes",
   clipboard = "unnamedplus",
   swapfile = false,
   timeoutlen = 500,
   hidden = true,
-  colorcolumn = "120",
+  -- colorcolumn = "120",
   conceallevel = 0,
   completeopt = "menuone,noselect",
-  cmdheight = 2,
+  -- cmdheight = 2,
 }
 
 -- M.plugins = {
