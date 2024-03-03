@@ -7,7 +7,7 @@ local plugins = {
   },
   {
     'VonHeikemen/lsp-zero.nvim',
-    branch = 'v2.x',
+    branch = 'v3.x',
     config = function()
       require("dot.lsp").setup()
     end,
@@ -30,24 +30,19 @@ local plugins = {
     version = "2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
     -- install jsregexp (optional!).
     build = "make install_jsregexp",
+    config = function ()
+      require("luasnip").setup()
+    end,
     enabled = true,
   },
   {
     "williamboman/mason.nvim",
-    config = function()
-      require("mason").setup()
-    end,
     cmd = { "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog" },
     lazy = true,
     enabled = true,
   },
   {
     "williamboman/mason-lspconfig.nvim",
-    config = function()
-      require("mason-lspconfig").setup{
-        ensure_installed = { "lua_ls", "yamlls", "terraformls", "gopls", "tsserver", "pylsp" }
-      }
-    end,
     cmd = { "LspInstall", "LspUninstall" },
     lazy = true,
     enabled = true,
@@ -74,7 +69,23 @@ local plugins = {
   },
   {
     "nvim-telescope/telescope.nvim",
-    tag = "0.1.2",
+    tag = "0.1.5",
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      { -- If encountering errors, see telescope-fzf-native README for install instructions
+        'nvim-telescope/telescope-fzf-native.nvim',
+
+        -- `build` is used to run some command when the plugin is installed/updated.
+        -- This is only run then, not every time Neovim starts up.
+        build = 'make',
+
+        -- `cond` is a condition used to determine whether this plugin should be
+        -- installed and loaded.
+        cond = function()
+          return vim.fn.executable 'make' == 1
+        end,
+      },
+    },
     config = function()
       require("dot.config.telescope").setup()
     end,
@@ -108,7 +119,7 @@ local plugins = {
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
     },
-    enabled = true,
+    enabled = false,
   },
   {
     "akinsho/bufferline.nvim",
@@ -147,7 +158,7 @@ local plugins = {
       --   If not available, we use `mini` as the fallback
       "rcarriga/nvim-notify",
     },
-    enabled = true,
+    enabled = false,
   },
   {
     "numToStr/Comment.nvim",
@@ -166,7 +177,7 @@ local plugins = {
     init = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
-      require("dot.config.which-key").setup()
+      require("which-key").setup()
     end,
     enabled = true,
   },
@@ -252,6 +263,14 @@ local plugins = {
       require("dot.config.zen-mode").setup()
     end,
   },
+  {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function ()
+      require("dot.config.harpoon").setup()
+    end
+  }
 }
 -- LuaFormatter on
 require("lazy").setup(plugins)

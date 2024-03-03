@@ -2,6 +2,7 @@ local M = {}
 
 _G.dotneotreeconfig = {
   window = { position = "left" },
+  filesystem = { follow_current_file = { enabled = true } },
   event_handlers = {
     -- {
     --  event = "neo_tree_window_before_open",
