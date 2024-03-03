@@ -74,11 +74,6 @@ function M.cmp()
     return
   end
 
-  local check_backspace = function()
-    local col = vim.fn.col "." - 1
-    return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
-  end
-
   cmp.setup({
     sources = {
       { name = "nvim_lsp" },
@@ -86,30 +81,35 @@ function M.cmp()
       { name = "luasnip" },
       { name = "buffer" },
       { name = "path" },
-      -- { name = "cmdline" },
+    },
+    snippet = {
+      expand = function(args)
+        luasnip.lsp_expand(args.body)
+      end,
     },
     mapping = {
-      ["<CR>"] = cmp.mapping.confirm { select = true },
-      ["<Tab>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item()
-        elseif luasnip.expandable() then
-          luasnip.expand()
-        elseif luasnip.expand_or_jumpable() then
+      -- Select the [n]ext item
+      ["<C-n>"] = cmp.mapping.select_next_item(),
+      -- Select the [p]revious item
+      ["<C-p>"] = cmp.mapping.select_prev_item(),
+      -- Accept ([y]es) the completion.
+      --  This will auto-import if your LSP supports it.
+      --  This will expand snippets if the LSP sent a snippet.
+      ["<C-y>"] = cmp.mapping.confirm { select = true },
+      -- Manually trigger a completion from nvim-cmp.
+      --  Generally you don't need this, because nvim-cmp will display
+      --  completions whenever it has completion options available.
+      ["<C-Space>"] = cmp.mapping.complete {},
+      -- <c-l> will move you to the right of each of the expansion locations.
+      -- <c-h> is similar, except moving you backwards.
+      ["<C-l>"] = cmp.mapping(function()
+        if luasnip.expand_or_locally_jumpable() then
           luasnip.expand_or_jump()
-        elseif check_backspace() then
-          fallback()
-        else
-          fallback()
         end
       end, { "i", "s" }),
-      ["<S-Tab>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_prev_item()
-        elseif luasnip.jumpable(-1) then
+      ["<C-h>"] = cmp.mapping(function()
+        if luasnip.locally_jumpable(-1) then
           luasnip.jump(-1)
-        else
-          fallback()
         end
       end, { "i", "s" }),
     },
@@ -125,10 +125,10 @@ function M.cmp()
         end
       end,
     },
-    window = {
-      completion = cmp.config.window.bordered(),
-      documentation = cmp.config.window.bordered(),
-    },
+    -- window = {
+    --   completion = cmp.config.window.bordered(),
+    --   documentation = cmp.config.window.bordered(),
+    -- },
   })
 end
 
