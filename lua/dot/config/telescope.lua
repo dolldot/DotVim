@@ -28,6 +28,7 @@ M.setup = function()
   nmap("<leader><leader>", builtin.buffers, "[ ] Find existing buffers")
 
   telescope.load_extension("fzf")
+  telescope.load_extension("yaml_schema")
   telescope.setup(config)
 end
 

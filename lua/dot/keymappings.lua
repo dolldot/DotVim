@@ -58,7 +58,8 @@ nmap("<Leader>o", "gg<S-v>G", "Select all")
 
 -- Toggle tree
 -- nmap("<Leader>e", ":Neotree toggle<CR>")
-nmap("<Leader>e", ":Explore<CR>", "File Explorer")
+-- nmap("<Leader>e", ":Explore<CR>", "File Explorer")
+nmap("<Leader>e", ":Oil<CR>", "File Explorer")
 
 -- Dashboard
 nmap("<Leader>;", ":Dashboard<CR>", "Dashboard")
@@ -81,6 +82,10 @@ nmap("<Leader>mz", "<cmd>ZenMode<CR>", "ZenMode")
 -- Custom
 -- nmap("<Leader>s", require("dot.utils.custom").search)
 -- nmap("<Leader>cn", require("dot.utils").switch_neotree_pos)
+
+-- nvim-pasta
+-- vim.keymap.set({ "n", "x" }, "p", require("pasta.mapping").p)
+-- vim.keymap.set({ "n", "x" }, "P", require("pasta.mapping").P)
 
 -- Set terminal keymaps
 nmap("<Leader>t", "<cmd>:ToggleTerm size=18 direction=horizontal<CR>", "Terminal")

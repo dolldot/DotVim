@@ -67,17 +67,17 @@ function utils.set_keymapt(key, func)
   vim.keymap.set("t", key, func, default_opts)
 end
 
-function utils.open_terminal()
-  local ok, toggleterm = pcall(require, "toggleterm.terminal")
-  if not ok then
-    return
-  end
-
-  local term = toggleterm.Terminal
-  local lazygit = term:new({ cmd = "lazygit", hidden = true })
-
-  lazygit:toggle()
-end
+-- function utils.open_terminal()
+--   local ok, toggleterm = pcall(require, "toggleterm.terminal")
+--   if not ok then
+--     return
+--   end
+--
+--   local term = toggleterm.Terminal
+--   local lazygit = term:new({ cmd = "lazygit", hidden = true })
+--
+--   lazygit:toggle()
+-- end
 
 -- function utils.switch_neotree_pos()
 --   local conf = _G.dotneotreeconfig

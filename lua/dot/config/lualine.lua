@@ -14,18 +14,18 @@ local config = {
   },
   sections = {
     lualine_a = { "mode" },
-    lualine_b = { "branch" },
-    lualine_c = { { "filename", path = 1 } },
+    lualine_b = { { "filename", path = 1 } },
+    lualine_c = {},
     lualine_x = {
       {
         "diagnostics",
         sources = { "nvim_diagnostic" },
         symbols = { error = " ", warn = " ", info = " ", hint = " " },
       },
-      "encoding",
+      -- "encoding",
       "filetype",
     },
-    lualine_y = { "progress" },
+    lualine_y = { "branch" },
     lualine_z = { "location" },
   },
   inactive_sections = {

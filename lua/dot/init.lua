@@ -20,6 +20,16 @@ utils.define_augroups {
     { "BufRead", "*", "setlocal formatoptions-=c formatoptions-=r formatoptions-=o" },
     { "BufNewFile", "*", "setlocal formatoptions-=c formatoptions-=r formatoptions-=o" },
   },
+  _removeindent_o = {
+    { "BufWinEnter", "*.yaml", "setlocal indentkeys-=o" },
+    { "BufRead", "*.yaml", "setlocal indentkeys-=o" },
+    { "BufNewFile", "*.yaml", "setlocal indentkeys-=o" },
+  },
+  _removeindent_dash = {
+    { "BufWinEnter", "*.yaml", "setlocal indentkeys-=0-" },
+    { "BufRead", "*.yaml", "setlocal indentkeys-=0-" },
+    { "BufNewFile", "*.yaml", "setlocal indentkeys-=0-" },
+  },
   -- Format on save
   _autoformat = {
     {
@@ -40,6 +50,16 @@ utils.define_augroups {
     {
       "BufWritePre",
       "*.jsx",
+      [[try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry]],
+    },
+    {
+      "BufWritePre",
+      "*.yaml",
+      [[try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry]],
+    },
+    {
+      "BufWritePre",
+      "*.tf",
       [[try | undojoin | Neoformat | catch /^Vim\%((\a\+)\)\=:E790/ | finally | silent Neoformat | endtry]],
     },
   },

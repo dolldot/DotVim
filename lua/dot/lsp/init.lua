@@ -78,8 +78,16 @@ function M.setup()
       "ocamllsp",
       "zls",
     },
-    handlers = { lsp_zero.default_setup },
+    handlers = {
+      -- lsp_zero.default_setup
+      function(server_name)
+        require("lspconfig")[server_name].setup({})
+      end,
+    },
   }
+
+  local yaml = require("yaml-companion").setup({})
+  require("lspconfig").yamlls.setup(yaml)
 
   -- (Optional) Configure lua language server for neovim
   require("lspconfig").lua_ls.setup(lsp_zero.nvim_lua_ls())

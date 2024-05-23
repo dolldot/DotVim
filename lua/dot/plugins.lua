@@ -122,6 +122,15 @@ local plugins = {
     enabled = false,
   },
   {
+    "stevearc/oil.nvim",
+    opts = {},
+    config = function ()
+      require("oil").setup()
+    end,
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    enabled = true,
+  },
+  {
     "akinsho/bufferline.nvim",
     version = "*",
     config = function()
@@ -270,7 +279,15 @@ local plugins = {
     config = function ()
       require("dot.config.harpoon").setup()
     end
-  }
+  },
+  {
+    "hrsh7th/nvim-pasta",
+    enabled = false,
+  },
+  {
+    "someone-stole-my-name/yaml-companion.nvim",
+    enabled = true
+  },
 }
 -- LuaFormatter on
 require("lazy").setup(plugins)

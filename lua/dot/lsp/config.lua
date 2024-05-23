@@ -95,11 +95,11 @@ function M.cmp()
       -- Accept ([y]es) the completion.
       --  This will auto-import if your LSP supports it.
       --  This will expand snippets if the LSP sent a snippet.
-      ["<C-y>"] = cmp.mapping.confirm { select = true },
+      ["<C-y>"] = cmp.mapping.confirm({ select = true }),
       -- Manually trigger a completion from nvim-cmp.
       --  Generally you don't need this, because nvim-cmp will display
       --  completions whenever it has completion options available.
-      ["<C-Space>"] = cmp.mapping.complete {},
+      ["<C-Space>"] = cmp.mapping.complete(),
       -- <c-l> will move you to the right of each of the expansion locations.
       -- <c-h> is similar, except moving you backwards.
       ["<C-l>"] = cmp.mapping(function()
