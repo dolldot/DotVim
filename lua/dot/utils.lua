@@ -1,4 +1,9 @@
 local utils = {}
+local config_path = vim.fn.stdpath("data") .. "/dot-config.json"
+local default_config = {
+  colorscheme = "catppuccin",
+  log = "off",
+}
 
 function utils.define_augroups(definitions)
   for group, definition in pairs(definitions) do
@@ -29,7 +34,7 @@ end
 
 function utils.set_options(options)
   for k, v in pairs(options) do
-    vim.api.nvim_set_option(k, v)
+    vim.api.nvim_set_option_value(k, v, { scope = "global" })
   end
 end
 
@@ -67,39 +72,49 @@ function utils.set_keymapt(key, func)
   vim.keymap.set("t", key, func, default_opts)
 end
 
--- function utils.open_terminal()
---   local ok, toggleterm = pcall(require, "toggleterm.terminal")
---   if not ok then
---     return
---   end
---
---   local term = toggleterm.Terminal
---   local lazygit = term:new({ cmd = "lazygit", hidden = true })
---
---   lazygit:toggle()
--- end
+-- read a file
 
--- function utils.switch_neotree_pos()
---   local conf = _G.dotneotreeconfig
---   local pos = conf.window.position
---   if pos == "left" then
---     conf.window.position = "float"
---   elseif pos == "float" then
---     conf.window.position = "left"
---   end
---   _G.dotneotreeconfig = conf
---   vim.cmd "Lazy reload neo-tree.nvim"
---
---   -- local ok, lazy = pcall(require, "lazy")
---   -- if not ok then
---   --   return
---   -- end
---   -- -- -- local optss = { plugins = { name = "neo-tree.nvim" } }
---   -- -- -- local plugin = lazy.plugins["neo-tree.nvim"]
---   -- --
---   -- -- -- lazy.reload({ plugins = { name = "neo-tree.nvim" } })
---   -- -- -- vim.api.nvim_command()
---   -- require("lazy.core.loader").reload({ "neo-tree.nvim" })
--- end
+local function read_file(path)
+  local fd = assert(io.open(path, "r"))
+  local data = fd:read("*a")
+  fd:close()
+  return data
+end
+
+-- write to a file
+local function write_file(path, contents)
+  local fd = assert(io.open(path, "w+"))
+  fd:write(contents)
+  fd:close()
+end
+
+-- create or read config file
+function utils.create_or_read_config()
+  local check_file = io.open(config_path, "r")
+  if check_file == nil then
+    write_file(config_path, vim.json.encode(default_config))
+  end
+
+  return vim.json.decode(read_file(config_path))
+end
+
+-- set the current applied colorscheme
+function utils.set_colorscheme()
+  local current_colorscheme = vim.g.colors_name
+  local config = utils.create_or_read_config()
+  config.colorscheme = current_colorscheme
+  write_file(config_path, vim.json.encode(config))
+end
+
+-- toggle log between error and off
+function utils.toggle_log()
+  local config = utils.create_or_read_config()
+  if config.log == "error" then
+    config.log = "off"
+  else
+    config.log = "error"
+  end
+  write_file(config_path, vim.json.encode(config))
+end
 
 return utils
