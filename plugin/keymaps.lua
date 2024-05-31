@@ -74,6 +74,9 @@ nmap("<Leader>mz", "<cmd>ZenMode<CR>", "ZenMode")
 -- Execute File
 nmap("<Leader>x", "<cmd>source %<CR>", "Execute this file")
 
+-- Undo Tree
+nmap("<Leader>u", "<cmd>UndotreeToggle<CR>", "Undotree")
+
 -- Custom
 nmap("<Leader>,c", require("dot.utils").set_colorscheme, "Apply colorscheme")
 nmap("<Leader>,l", require("dot.utils").toggle_log, "Toggle log")
