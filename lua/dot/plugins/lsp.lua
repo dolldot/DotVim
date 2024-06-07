@@ -8,6 +8,7 @@ return {
       "folke/trouble.nvim",
       "someone-stole-my-name/yaml-companion.nvim",
       "stevearc/conform.nvim",
+      "towolf/vim-helm",
     },
     config = function()
       local lsp_zero = require("lsp-zero")
