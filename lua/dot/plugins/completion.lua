@@ -8,6 +8,7 @@ return {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       { "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
+      "Exafunction/codeium.nvim",
     },
     config = function()
       local icons = {
@@ -36,6 +37,7 @@ return {
         Event = "",
         Operator = "󰆕",
         TypeParameter = "󰅲",
+        Codeium = "",
       }
 
       local cmp = require("cmp")
@@ -48,6 +50,7 @@ return {
           { name = "luasnip" },
           { name = "buffer" },
           { name = "path" },
+          { name = "codeium" },
         },
         snippet = {
           expand = function(args)
@@ -93,6 +96,8 @@ return {
           end,
         },
       })
+
+      require("codeium").setup({})
     end,
   },
 }
