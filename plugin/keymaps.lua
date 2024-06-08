@@ -77,6 +77,9 @@ nmap("<Leader>x", "<cmd>source %<CR>", "Execute this file")
 -- Undo Tree
 nmap("<Leader>u", "<cmd>UndotreeToggle<CR>", "Undotree")
 
+-- Git
+nmap("<Leader>g", "<cmd>Git<CR>", "Git")
+
 -- Custom
 nmap("<Leader>,c", require("dot.utils").set_colorscheme, "Apply colorscheme")
 nmap("<Leader>,l", require("dot.utils").toggle_log, "Toggle log")
