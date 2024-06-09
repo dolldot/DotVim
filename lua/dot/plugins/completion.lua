@@ -97,6 +97,13 @@ return {
         },
       })
 
+      cmp.setup.filetype({ "sql" }, {
+        sources = {
+          { name = "vim-dadbod-completion" },
+          { name = "buffer" },
+        },
+      })
+
       require("codeium").setup({})
     end,
   },

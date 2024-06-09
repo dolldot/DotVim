@@ -54,7 +54,7 @@ nmap("<Leader>o", "gg<S-v>G", "Select all")
 nmap("<Leader>e", ":Oil<CR>", "File Explorer")
 
 -- Dashboard
-nmap("<Leader>;", ":Dashboard<CR>", "Dashboard")
+-- nmap("<Leader>;", ":Dashboard<CR>", "Dashboard")
 
 -- Package Manager
 nmap("<Leader>pm", "<cmd>Mason<CR>", "Mason")
@@ -79,6 +79,9 @@ nmap("<Leader>u", "<cmd>UndotreeToggle<CR>", "Undotree")
 
 -- Git
 nmap("<Leader>g", "<cmd>Git<CR>", "Git")
+
+-- DB
+nmap("<Leader>db", "<cmd>DBUI<CR>", "DB")
 
 -- Custom
 nmap("<Leader>,c", require("dot.utils").set_colorscheme, "Apply colorscheme")
