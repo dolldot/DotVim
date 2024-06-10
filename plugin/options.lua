@@ -28,7 +28,7 @@ utils.set_options({
   showmode = false,
   cursorline = true,
   laststatus = 2,
-  -- showtabline = 2,
+  showtabline = 0,
   signcolumn = "yes",
   clipboard = "unnamedplus",
   swapfile = false,

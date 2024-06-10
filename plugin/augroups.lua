@@ -9,3 +9,28 @@ utils.define_augroups({
     },
   },
 })
+
+utils.define_augroups({
+  _custom_statusline = {
+    {
+      "WinEnter",
+      "*",
+      "setlocal statusline=%!v:lua.Statusline.active()",
+    },
+    {
+      "BufEnter",
+      "*",
+      "setlocal statusline=%!v:lua.Statusline.active()",
+    },
+    {
+      "WinLeave",
+      "*",
+      "setlocal statusline=%!v:lua.Statusline.inactive()",
+    },
+    {
+      "BufLeave",
+      "*",
+      "setlocal statusline=%!v:lua.Statusline.inactive()",
+    },
+  },
+})

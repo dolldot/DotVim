@@ -22,6 +22,8 @@ local config = utils.create_or_read_config()
 vim.cmd.colorscheme(config.colorscheme)
 vim.lsp.set_log_level(config.log)
 
+require("dot.statusline")
+
 -- -- autoload telescope when opening neovim
 -- vim.api.nvim_create_autocmd("VimEnter", {
 --   callback = function()
