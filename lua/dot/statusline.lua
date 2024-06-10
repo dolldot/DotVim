@@ -165,6 +165,8 @@ function Statusline.inactive()
   return " %F"
 end
 
+-- colorpalette
+-- https://colorhunt.co/palette/49243e704264bb8493dbafa0
 vim.cmd.highlight("first guibg=#BB8493 guifg=#49243E")
 vim.cmd.highlight("first_separator guibg=#49243E guifg=#BB8493")
 vim.cmd.highlight("second guibg=#49243E guifg=#BB8493")
@@ -174,7 +176,7 @@ vim.cmd.highlight("third_separator guibg=transparent guifg=#49243E")
 vim.cmd.highlight("third guibg=#49243E guifg=#BB8493")
 vim.cmd.highlight("forth_separator guibg=#49243E guifg=#BB8493")
 vim.cmd.highlight("forth guibg=#BB8493 guifg=#49243E")
-
 vim.cmd.highlight("active_tab guibg=transparent guifg=#BB8493")
 vim.cmd.highlight("other_tab guibg=transparent guifg=#704264")
+
 vim.go.statusline = Statusline.active()
