@@ -46,14 +46,14 @@ end
 local function lsp()
   local count = {}
   local levels = {
-    errors = "Error",
-    warnings = "Warn",
-    info = "Info",
-    hints = "Hint",
+    errors = "ERROR",
+    warnings = "WARN",
+    info = "INFO",
+    hints = "HINT",
   }
 
-  for k, _ in pairs(levels) do
-    count[k] = vim.tbl_count(vim.diagnostic.get(0, {}))
+  for k, v in pairs(levels) do
+    count[k] = vim.tbl_count(vim.diagnostic.get(0, { severity = vim.diagnostic.severity[v]}))
   end
 
   local errors = ""
@@ -139,23 +139,23 @@ Statusline.active = function()
     "%#first#",
     mode(),
     "%#first_separator#",
-    "",
+    -- "",
     "%#second#",
     filepath(),
     filename(),
     "%#second_separator#",
-    "",
+    -- "",
     "%#divider#",
     lsp(),
     "%=",
     lineinfo(),
     tabs(),
     "%#third_separator#",
-    "",
+    -- "",
     "%#third#",
     filetype(),
     "%#forth_separator#",
-    "",
+    -- "",
     "%#forth#",
     git(),
   })
@@ -167,16 +167,16 @@ end
 
 -- colorpalette
 -- https://colorhunt.co/palette/49243e704264bb8493dbafa0
-vim.cmd.highlight("first guibg=#BB8493 guifg=#49243E")
-vim.cmd.highlight("first_separator guibg=#49243E guifg=#BB8493")
-vim.cmd.highlight("second guibg=#49243E guifg=#BB8493")
-vim.cmd.highlight("second_separator guibg=transparent guifg=#49243E")
-vim.cmd.highlight("divider guibg=transparent guifg=#704264")
-vim.cmd.highlight("third_separator guibg=transparent guifg=#49243E")
-vim.cmd.highlight("third guibg=#49243E guifg=#BB8493")
-vim.cmd.highlight("forth_separator guibg=#49243E guifg=#BB8493")
-vim.cmd.highlight("forth guibg=#BB8493 guifg=#49243E")
-vim.cmd.highlight("active_tab guibg=transparent guifg=#BB8493")
-vim.cmd.highlight("other_tab guibg=transparent guifg=#704264")
+-- vim.cmd.highlight("first guibg=#BB8493 guifg=#49243E")
+-- vim.cmd.highlight("first_separator guibg=#49243E guifg=#BB8493")
+-- vim.cmd.highlight("second guibg=#49243E guifg=#BB8493")
+-- vim.cmd.highlight("second_separator guibg=transparent guifg=#49243E")
+-- vim.cmd.highlight("divider guibg=transparent guifg=#704264")
+-- vim.cmd.highlight("third_separator guibg=transparent guifg=#49243E")
+-- vim.cmd.highlight("third guibg=#49243E guifg=#BB8493")
+-- vim.cmd.highlight("forth_separator guibg=#49243E guifg=#BB8493")
+-- vim.cmd.highlight("forth guibg=#BB8493 guifg=#49243E")
+-- vim.cmd.highlight("active_tab guibg=transparent guifg=#BB8493")
+-- vim.cmd.highlight("other_tab guibg=transparent guifg=#704264")
 
 vim.go.statusline = Statusline.active()
